@@ -77,14 +77,21 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Northstar Logistics" },
-      { name: "description", content: "Reliable global freight and delivery solutions." },
-      { name: "author", content: "Northstar Logistics" },
-      { property: "og:title", content: "Northstar Logistics" },
-      { property: "og:description", content: "Reliable global freight and delivery solutions." },
+      { title: "MAWA Shipping Lines" },
+      {
+        name: "description",
+        content:
+          "A Sister Concern of MAWA GROUP — licensed shipping agency and maritime support services connecting Chattogram, Bangladesh with the regional and global maritime network.",
+      },
+      { name: "author", content: "MAWA Shipping Lines" },
+      { property: "og:title", content: "MAWA Shipping Lines" },
+      {
+        property: "og:description",
+        content:
+          "A Sister Concern of MAWA GROUP — licensed shipping agency and maritime support services connecting Chattogram, Bangladesh with the regional and global maritime network.",
+      },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
-      { name: "twitter:site", content: "@Lovable" },
     ],
     links: [
       {
