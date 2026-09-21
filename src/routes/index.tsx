@@ -2,11 +2,14 @@ import { createFileRoute } from "@tanstack/react-router";
 import { useCallback, useEffect, useState } from "react";
 import useEmblaCarousel from "embla-carousel-react";
 import {
+  Anchor,
   ArrowLeft,
   ArrowRight,
   CheckCircle2,
   Compass,
+  Droplet,
   Facebook,
+  Globe,
   Handshake,
   HeartHandshake,
   Instagram,
@@ -14,16 +17,19 @@ import {
   Mail,
   MapPin,
   Menu,
+  Navigation,
   Phone,
   Ship,
   ShieldCheck,
+  ShoppingBag,
+  Truck,
+  Users,
+  Wrench,
   X,
 } from "lucide-react";
 import payraImage from "../assets/payra-port.jpg";
 import chairmanImage from "../assets/chairman-portrait.jpg";
 import dockyardImage from "../assets/mawa-dockyard.jpg";
-import crewImage from "../assets/crew-boarding.jpg";
-import deckImage from "../assets/vessel-deck-ops.jpg";
 import logoImage from "../assets/mawa-logo.jpg";
 
 export const Route = createFileRoute("/")({
@@ -53,44 +59,84 @@ export const Route = createFileRoute("/")({
 
 const services = [
   {
-    title: "Vessel Agency Representation",
-    text: "Professional representation for ship owners and operators calling at Chattogram Port.",
-    image: payraImage,
+    icon: Anchor,
+    title: "24/7 Port Agency & Attendance",
+    text: "Full-suite vessel support across Chittagong, Mongla, Matarbari, and Payra. Guaranteed fast berth turnaround, 24/7 boarding officers, and fixed Proforma Disbursement Accounts (PDAs).",
+    items: [
+      "Full Agency & Owners' Protective Agency (OPA)",
+      'Port Clearances & "OK to Board" Passes',
+      "Class Surveyor & Flag State Coordination",
+    ],
   },
   {
-    title: "Pre-Arrival and Port Call Coordination",
-    text: "Coordinated planning and communication ahead of every vessel call.",
-    image: deckImage,
+    icon: ShoppingBag,
+    title: "Premium Chandlery & Provisions",
+    text: "Direct-to-deck delivery of fresh food provisions, bonded stores, and technical supplies at berth or outer anchorages without operational delays.",
+    items: [
+      "Fresh & Frozen Food Provisions",
+      "Deck, Engine & Cabin Stores",
+      "Marine Chemicals & Approved Lubricants",
+    ],
   },
   {
-    title: "Arrival and Departure Formalities",
-    text: "Accurate handling of vessel arrival and departure procedures.",
-    image: crewImage,
+    icon: Wrench,
+    title: "Mawa Dockyard & Workshop Repairs",
+    text: "In-house heavy marine engineering and afloat repairs backed directly by Mawa Group's owned dockyard and specialized workshops.",
+    items: [
+      "Mechanical, Electrical & Pipe Repairs",
+      "Structural Steel Welding & Hull Renewal",
+      "Emergency Afloat Fixes & Spare Parts Supply",
+    ],
   },
   {
-    title: "Port Documentation and Clearance",
-    text: "Complete documentation and clearance coordination with port authorities.",
-    image: payraImage,
+    icon: Users,
+    title: "Seamless Crew Changes",
+    text: "End-to-end crew handling for joining and repatriating mariners, ensuring swift transit and full immigration compliance.",
+    items: [
+      "Immigration Formalities & Shore Passes",
+      "Airport Transfers & Hotel Bookings",
+      "Emergency Medical & Dental Assistance",
+    ],
   },
   {
-    title: "Cargo Loading and Unloading Support",
-    text: "Support for cargo loading and unloading operations at berth.",
-    image: payraImage,
+    icon: Truck,
+    title: "Air Freight Spares & Customs Clearance",
+    text: "Expedited door-to-deck customs clearance and express delivery for critical engine spare parts arriving via Dhaka or Chittagong airports.",
+    items: [
+      "Airport-to-Vessel Express Delivery",
+      "Import & Export Customs Clearance",
+      "Courier Coordination & On-Board Delivery",
+    ],
   },
   {
-    title: "Stevedoring Coordination",
-    text: "Coordinated stevedoring and cargo handling activities.",
-    image: payraImage,
+    icon: Droplet,
+    title: "MARPOL Environmental & Utility Services",
+    text: "Certified, environmentally compliant waste disposal and fresh water supply services across all Bangladeshi terminals.",
+    items: [
+      "Fresh Water Supply (Barge & Shore Line)",
+      "Sludge, Bilge Water & Garbage Disposal",
+      "Ship Sanitation Certificate Renewals",
+    ],
   },
   {
-    title: "Vessel Husbandry Support",
-    text: "Fresh water arrangements and other husbandry requirements for vessels in port.",
-    image: deckImage,
+    icon: Navigation,
+    title: "Tug, Barge & Heavy Launch Support",
+    text: "Comprehensive offshore logistics and heavy equipment coordination for outer anchorage transfers and lighterage operations.",
+    items: [
+      "Launch Boat & Tugboat Arrangement",
+      "Crane & Heavy Floating Equipment Hire",
+      "Cash to Master (CTM) Delivery",
+    ],
   },
   {
-    title: "Crew, Stores and Transportation Support",
-    text: "Crew boarding, stores handling and local transportation support.",
-    image: crewImage,
+    icon: Globe,
+    title: "Feeder Agency & Transshipment Services",
+    text: "Dedicated agency desk for container feeder lines on the Singapore ↔ Bangladesh trade corridor, optimizing slot-charter and cargo turnaround.",
+    items: [
+      "Feeder Slot-Charter Coordination",
+      "Ship-to-Ship (STS) Transfer Supervision",
+      "Off-Dock Container & Depot Management",
+    ],
   },
 ];
 
@@ -455,7 +501,7 @@ function Index() {
             <div>
               <p className="eyebrow text-brand-soft">Our Services</p>
               <h2 className="section-title max-w-xl">
-                Complete shipping agency support, from arrival to departure.
+                One partner for every port call, from berth to departure.
               </h2>
             </div>
             <div className="flex items-center gap-3">
@@ -479,28 +525,37 @@ function Index() {
           </div>
           <div ref={serviceRef} className="mt-12 overflow-hidden">
             <div className="flex -ml-5 touch-pan-y">
-              {services.map((service, index) => (
-                <article
-                  key={service.title}
-                  className="group min-w-0 flex-[0_0_88%] pl-5 sm:flex-[0_0_48%] lg:flex-[0_0_33.333%]"
-                >
-                  <div className="aspect-[4/3] overflow-hidden">
-                    <img
-                      src={service.image}
-                      alt={service.title}
-                      loading="lazy"
-                      className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-[1.03]"
-                    />
-                  </div>
-                  <div className="border-b-2 border-brand py-6">
-                    <span className="text-xs font-extrabold text-brand">
-                      {String(index + 1).padStart(2, "0")}
-                    </span>
-                    <h3 className="mt-2 text-lg font-extrabold">{service.title}</h3>
-                    <p className="mt-3 text-sm leading-6 text-deep-muted">{service.text}</p>
-                  </div>
-                </article>
-              ))}
+              {services.map((service, index) => {
+                const ServiceIcon = service.icon;
+                return (
+                  <article
+                    key={service.title}
+                    className="group min-w-0 flex-[0_0_88%] pl-5 sm:flex-[0_0_48%] lg:flex-[0_0_33.333%]"
+                  >
+                    <div className="flex h-full flex-col border-t-2 border-brand pt-7 pb-6">
+                      <div className="flex items-center justify-between">
+                        <ServiceIcon className="size-8 text-brand" />
+                        <span className="text-xs font-extrabold text-brand">
+                          {String(index + 1).padStart(2, "0")}
+                        </span>
+                      </div>
+                      <h3 className="mt-5 text-lg font-extrabold">{service.title}</h3>
+                      <p className="mt-3 text-sm leading-6 text-deep-muted">{service.text}</p>
+                      <ul className="mt-5 space-y-2 border-t border-deep-line pt-5">
+                        {service.items.map((item) => (
+                          <li
+                            key={item}
+                            className="flex items-start gap-2 text-xs leading-5 text-deep-muted"
+                          >
+                            <CheckCircle2 className="mt-0.5 size-3.5 shrink-0 text-brand" />
+                            {item}
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  </article>
+                );
+              })}
             </div>
           </div>
           <div className="mt-7 flex items-center justify-between">
